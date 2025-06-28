@@ -1,5 +1,6 @@
 import { GetStaticProps } from "next";
 import RecipeCard from "@/components/RecipeCard";
+import ThemeToggle from "@/components/ThemeToggle";
 import {
   Select,
   SelectTrigger,
@@ -40,6 +41,9 @@ export default function RecipesPage({ recipes }: Props) {
 
   return (
     <div>
+      <div className="p-4 fixed top-4 right-4 z-50">
+        <ThemeToggle />
+      </div>
       <div className="p-4">
         <Select onValueChange={(value) => setFilter(value)}>
           <SelectTrigger className="w-[180px] mb-4">
