@@ -1,40 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Recipe Galaxy
 
-## Getting Started
+**Recipe Galaxy** est une application web moderne de présentation de recettes, développée avec **Next.js**, **Tailwind CSS** et **ShadCN/UI**. Elle permet de visualiser des recettes avec filtres dynamiques, affichage détaillé animé, et prise en charge du mode sombre/clair.
 
-First, run the development server:
+---
+
+# Fonctionnalités
+
+- Listing de recettes depuis une API externe
+- Filtrage des recettes par niveau de difficulté
+- UI moderne avec composants ShadCN et gestion du thème (dark/light)
+- Animations fluides grâce à `framer-motion`
+- Génération statique (SSG) avec revalidation automatique (ISR)
+- Tests unitaires sur les composants de base
+
+---
+
+# Stack technique
+
+- **Framework** : `Next.js`
+- **Styles** : `Tailwind CSS`
+- **Thème** : `next-themes` (gestion dark/light mode)
+- **Animation** : `framer-motion`
+- **Tests** : `jest`, `@testing-library/react`
+
+---
+
+# Structure du projet
+
+.
+├── components         → Composants UI (RecipeCard, ThemeToggle, DetailsRecipe)
+├── pages              → Pages Next.js (/, /recipes, /recipes/[slug])
+├── styles             → Fichiers CSS
+├── public             → Images
+├── tests              → Fichiers de test unitaire
+├── README.md
+
+
+
+---
+
+# INSTALLATION LOCALE
+
+1. Cloner le projet :
+```bash
+`git clone https://github.com/felana-niaina/recettes-app.git` (votre url ici par rapport à mon repository)
+cd recettes-app
+```
+
+2. Installer les dépendances :
+
+```bash
+npm install
+```
+
+3. Lancer le serveur de développement :
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Accède à l'application sur : [http://localhost:3000]
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+---
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+# Choix technique : SSG / ISR
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+Nous avons utilisé la fonction `getStaticProps` de Next.js avec l’option `revalidate`.
+Les avantages  :
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Amélioration des performances grâce à la génération statique
+- Données automatiquement rafraîchies sans rebuild manuel (ISR)
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+# UX & UI
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Composants : `Button`, `Card`, `Select` (de ShadCN)
+- Thème personnalisable via un toggle visible et accessible
+- Interface responsive pour mobiles et desktop
+- Animations des titres, cartes et icônes avec `framer-motion`
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+# Auteur
+
+Projet réalisé par `Felaniaina` dans le cadre d'un test technique.
+

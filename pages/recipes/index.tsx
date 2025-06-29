@@ -1,6 +1,7 @@
 import { GetStaticProps } from "next";
 import RecipeCard from "@/components/RecipeCard";
 import ThemeToggle from "@/components/ThemeToggle";
+import Head from "next/head";
 import {
   Select,
   SelectTrigger,
@@ -9,6 +10,10 @@ import {
   SelectItem,
 } from "@/components/ui/select";
 import { useState } from "react";
+import { Home } from "lucide-react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+
 type Recipe = {
   id: number;
   name: string;
@@ -41,12 +46,24 @@ export default function RecipesPage({ recipes }: Props) {
 
   return (
     <div>
-      <div className="p-4 fixed top-4 right-4 z-50">
+      <Head>
+        <title>Recipes list</title>
+      </Head>
+      <div className="p-2 fixed top-2 right-4 z-50 bg-background/80 backdrop-blur-sm rounded-md shadow-md">
         <ThemeToggle />
       </div>
-      <div className="p-4">
+
+      <div className="p-2 fixed top-2 left-4 z-50 bg-background/80 backdrop-blur-sm rounded-md shadow-md">
+        <Link href="/">
+          <Button variant="outline" size="icon" className="shadow-lg">
+            <Home className="w-5 h-5" />
+          </Button>
+        </Link>
+      </div>
+
+      <div className="p-2 fixed top-2 left-1/2 transform -translate-x-1/2 z-50 bg-background/80 backdrop-blur-sm rounded-md shadow-md">
         <Select onValueChange={(value) => setFilter(value)}>
-          <SelectTrigger className="w-[180px] mb-4">
+          <SelectTrigger className="w-[180px]">
             <SelectValue placeholder="Filter by difficulty" />
           </SelectTrigger>
           <SelectContent>
@@ -56,7 +73,7 @@ export default function RecipesPage({ recipes }: Props) {
         </Select>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4 pt-20">
         {filtered.map((recipe) => (
           <RecipeCard key={recipe.id} recipe={recipe} />
         ))}
