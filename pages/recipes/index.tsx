@@ -1,6 +1,8 @@
 import { GetStaticProps } from "next";
 import RecipeCard from "@/components/RecipeCard";
 import ThemeToggle from "@/components/ThemeToggle";
+import RecipeSearchForm from "@/components/RecipeSearchForm";
+
 import Head from "next/head";
 import {
   Select,
@@ -39,10 +41,13 @@ export const getStaticProps: GetStaticProps = async () => {
 
 export default function RecipesPage({ recipes }: Props) {
   const [filter, setFilter] = useState("");
+  const [query, setQuery] = useState("");
 
-  const filtered = filter
-    ? recipes.filter((r) => r.difficulty === filter)
-    : recipes;
+  const filtered = recipes.filter((r) => {
+    const matchesFilter = filter ? r.difficulty === filter : true;
+    const matchesQuery = r.name.toLowerCase().includes(query.toLowerCase());
+    return matchesFilter && matchesQuery;
+  });
 
   return (
     <div>
@@ -60,20 +65,25 @@ export default function RecipesPage({ recipes }: Props) {
           </Button>
         </Link>
       </div>
+      <div className="flex flex-col md:flex-row gap-9 p-2 fixed top-2 left-1/2 transform -translate-x-1/2 z-50">
+        <div className="bg-background/80 backdrop-blur-sm rounded-md shadow-md">
+          <Select onValueChange={(value) => setFilter(value)}>
+            <SelectTrigger className="w-[180px]">
+              <SelectValue placeholder="Filter by difficulty" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="Easy">Easy</SelectItem>
+              <SelectItem value="Medium">Medium</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
 
-      <div className="p-2 fixed top-2 left-1/2 transform -translate-x-1/2 z-50 bg-background/80 backdrop-blur-sm rounded-md shadow-md">
-        <Select onValueChange={(value) => setFilter(value)}>
-          <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="Filter by difficulty" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="Easy">Easy</SelectItem>
-            <SelectItem value="Medium">Medium</SelectItem>
-          </SelectContent>
-        </Select>
+        <div className="bg-background/80 backdrop-blur-sm rounded-md shadow-md">
+          <RecipeSearchForm onSearch={(value) => setQuery(value)} />
+        </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4 pt-20">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4 pt-40">
         {filtered.map((recipe) => (
           <RecipeCard key={recipe.id} recipe={recipe} />
         ))}

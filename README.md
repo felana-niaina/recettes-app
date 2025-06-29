@@ -63,6 +63,19 @@ Accède à l'application sur : [http://localhost:3000]
 
 ---
 
+# Tests
+
+Ce projet utilise **Jest** et **React Testing Library** pour les tests unitaires.
+
+### Lancer les tests
+
+Pour exécuter tous les tests, utilisez la commande suivante :
+
+```bash
+npm test
+```
+---
+
 # Choix technique : SSG / ISR
 
 Nous avons utilisé la fonction `getStaticProps` de Next.js avec l’option `revalidate`.
