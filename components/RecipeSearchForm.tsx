@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Search } from "lucide-react"; 
@@ -14,6 +14,12 @@ export default function RecipeSearchForm({ onSearch }: SearchFormProps) {
     e.preventDefault();
     onSearch(query.trim());
   };
+
+  useEffect(() => {
+    if (query.trim() === "") {
+      onSearch("");
+    }
+  }, [query, onSearch]);
 
   return (
     <form onSubmit={handleSubmit} className="flex gap-2 items-center max-w-md w-full mx-auto">
