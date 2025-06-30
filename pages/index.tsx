@@ -6,11 +6,16 @@ import { useTheme } from "next-themes"
 import { ChefHat } from "lucide-react"
 import ThemeToggle from "@/components/ThemeToggle";
 import { motion } from "framer-motion"
+import ParticlesBackground from "@/components/ParticlesBackground";
 
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col justify-center items-center px-6 bg-background text-foreground transition-colors relative overflow-hidden">
       
+      {/* Animated Particle Background */}
+      <ParticlesBackground />
+
+      {/* Theme Toggle */}
       <div className="fixed top-4 right-4 z-10">
         <ThemeToggle />
       </div>
@@ -30,7 +35,6 @@ export default function Home() {
           <ChefHat className="mx-auto w-20 h-20 text-primary mb-6" />
         </motion.div>
 
-        {/* Title */}
         <motion.h1
           className="text-5xl font-extrabold mb-6"
           initial={{ opacity: 0, y: 20 }}
@@ -40,7 +44,6 @@ export default function Home() {
           Welcome to <span className="text-primary">Recipe Galaxy</span>
         </motion.h1>
 
-        {/* Subtitle */}
         <motion.p
           className="text-lg text-muted-foreground mb-10 leading-relaxed"
           initial={{ opacity: 0 }}
@@ -51,7 +54,6 @@ export default function Home() {
           Let your taste buds travel through flavors.
         </motion.p>
 
-        {/* CTA Button */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}

@@ -74,11 +74,17 @@ export default function RecipesPage({ recipes }: Props) {
             </SelectContent>
           </Select>
 
+          <div className="sm:hidden">
+            <ThemeToggle />
+          </div>
           {/* Search Form */}
           <RecipeSearchForm onSearch={(value) => setQuery(value)} />
 
           {/* Theme Toggle */}
-          <ThemeToggle />
+          <div className="hidden sm:block">
+            <ThemeToggle />
+          </div>
+          
         </div>
       </div>
 
