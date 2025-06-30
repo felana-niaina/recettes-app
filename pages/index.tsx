@@ -12,7 +12,6 @@ import { motion } from "framer-motion";
 import ParticlesBackground from "@/components/ParticlesBackground";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { useTheme } from 'next-themes'
 
 export default function Home() {
   const router = useRouter();
