@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Search } from "lucide-react"; 
 
 type SearchFormProps = {
   onSearch: (query: string) => void;
@@ -23,8 +24,14 @@ export default function RecipeSearchForm({ onSearch }: SearchFormProps) {
         onChange={(e) => setQuery(e.target.value)}
         data-testid="search-input"
       />
-      <Button type="submit" data-testid="search-button">
-        Search
+
+      <Button
+        type="submit"
+        size="icon"
+        data-testid="search-button"
+        className="shadow"
+      >
+        <Search className="w-5 h-5" />
       </Button>
     </form>
   );

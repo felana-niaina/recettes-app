@@ -54,19 +54,16 @@ export default function RecipesPage({ recipes }: Props) {
       <Head>
         <title>Recipes list</title>
       </Head>
-      <div className="p-2 fixed top-2 right-4 z-50 bg-background/80 backdrop-blur-sm rounded-md shadow-md">
-        <ThemeToggle />
-      </div>
+      <div className="fixed top-2 left-1/2 transform -translate-x-1/2 z-50 w-full px-4">
+        <div className="flex flex-wrap justify-center items-center gap-4 bg-background/90 backdrop-blur-sm p-2 rounded-xl shadow-md border border-border max-w-4xl mx-auto">
+          {/* Home Button */}
+          <Link href="/">
+            <Button variant="outline" size="icon" className="shadow">
+              <Home className="w-5 h-5" />
+            </Button>
+          </Link>
 
-      <div className="p-2 fixed top-2 left-4 z-50 bg-background/80 backdrop-blur-sm rounded-md shadow-md">
-        <Link href="/">
-          <Button variant="outline" size="icon" className="shadow-lg">
-            <Home className="w-5 h-5" />
-          </Button>
-        </Link>
-      </div>
-      <div className="flex flex-col md:flex-row gap-9 p-2 fixed top-2 left-1/2 transform -translate-x-1/2 z-50">
-        <div className="bg-background/80 backdrop-blur-sm rounded-md shadow-md">
+          {/* Filter Select */}
           <Select onValueChange={(value) => setFilter(value)}>
             <SelectTrigger className="w-[180px]">
               <SelectValue placeholder="Filter by difficulty" />
@@ -76,17 +73,25 @@ export default function RecipesPage({ recipes }: Props) {
               <SelectItem value="Medium">Medium</SelectItem>
             </SelectContent>
           </Select>
-        </div>
 
-        <div className="bg-background/80 backdrop-blur-sm rounded-md shadow-md">
+          {/* Search Form */}
           <RecipeSearchForm onSearch={(value) => setQuery(value)} />
+
+          {/* Theme Toggle */}
+          <ThemeToggle />
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4 pt-40">
-        {filtered.map((recipe) => (
-          <RecipeCard key={recipe.id} recipe={recipe} />
-        ))}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4 pt-25">
+        {filtered.length > 0 ? (
+          filtered.map((recipe) => (
+            <RecipeCard key={recipe.id} recipe={recipe} />
+          ))
+        ) : (
+          <div className="col-span-full text-center text-muted-foreground text-lg mt-10">
+            No recipes found.
+          </div>
+        )}
       </div>
     </div>
   );
