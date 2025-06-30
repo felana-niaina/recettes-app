@@ -53,7 +53,7 @@ const RecipeCard = ({ recipe }: { recipe: Recipe }) => {
 
           <Link href={`/recipes/${generateSlug(recipe.name)}`}>
             <Button
-              className="w-full mt-2"
+              className="w-full mt-2 bg-primary text-white dark:bg-[#4e4e4e] dark:hover:bg-[#6b6b6b]"
               variant="default"
               size="sm"
               aria-label={`See recipe for ${recipe.name}`}

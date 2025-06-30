@@ -17,7 +17,6 @@ export default function ThemeToggle() {
   return (
     <Button
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      variant="outline"
     >
       {theme === 'dark' ? <Sun className="h-9 w-9" /> : <Moon className="h-9 w-9" />}
     </Button>

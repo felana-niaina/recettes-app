@@ -43,7 +43,7 @@
 
 1. Cloner le projet :
 ```bash
-`git clone https://github.com/felana-niaina/recettes-app.git` (votre url ici par rapport à mon repository)
+`git clone https://github.com/felana-niaina/recettes-app.git`
 cd recettes-app
 ```
 
