@@ -1,12 +1,16 @@
-import { useState } from 'react';
+import { useState } from "react";
 
-export default function RecipeAddForm({ onSubmit }: { onSubmit: (data: any) => void }) {
-  const [name, setName] = useState('');
+type RecipeAddFormProps = {
+  onSubmit: (data: { name: string }) => void;
+};
 
-  const handleSubmit = (e: React.FormEvent) => {
+export default function RecipeAddForm({ onSubmit }: RecipeAddFormProps) {
+  const [name, setName] = useState("");
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     onSubmit({ name });
-    setName('');
+    setName("");
   };
 
   return (

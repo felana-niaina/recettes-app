@@ -18,7 +18,7 @@ const page404 = () => {
       <h1 className="text-4xl font-bold mb-4">Oops! Page not found</h1>
 
       <p className="text-muted-foreground mb-6 max-w-md">
-        The page you're looking for doesn&apos;t exist. Let&apos;s get
+        The page you&apos;re looking for doesn&apos;t exist. Let&apos;s get
         you back to safety.
       </p>
 
